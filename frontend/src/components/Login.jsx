@@ -43,7 +43,7 @@ export default function Login() {
       toast("Success", "Login successful!", "success");
 
     } catch (error) {
-      console.error('Login error:', error);
+      // console.error('Login error:', error);
       toast("Error", error.response.data.message || "Failed to connect to the server.", "error");
     }
   };

@@ -54,7 +54,7 @@ const userSignup = async (req, res) => {
         await user.save();
 
         if (user) {
-            tokenGenerate(user._id, res);
+           tokenGenerate(user._id, res);
 
             res.status(201).json({
                 _id: user._id,
@@ -63,6 +63,7 @@ const userSignup = async (req, res) => {
                 userName: user.userName,
                 bio: user.bio,
                 profilePic: user.profilePic,
+                
             });
         } else {
             res.status(400).json({ error: "Invalid user data" });
@@ -112,21 +113,24 @@ const userLogin = async (req, res) => {
     }
 };
 
-const userLogout = (req, res) => {
-    try {
-        res.cookie("jwt", "", { maxAge: 0 });
 
-        res.json({
-            success: true,
-            message: "User logged out successfully",
+
+const userLogout = (req, res) => {
+	try {
+		res.clearCookie("jwt", {
+            path: "/",
+            expires: new Date(0),
+            httpOnly: true,
+            sameSite: "none",
+            secure: process.env.NODE_ENV === "production"
         });
-    } catch (err) {
-        return res.json({
-            success: false,
-            message: `Something is wrong: ${err.message}`,
-        });
-    }
+		res.status(200).json({ message: "User logged out successfully" });	
+     } catch (err) {
+		res.status(500).json({ error: err.message });
+		console.log("Error in signupUser: ", err.message);
+	}
 };
+
 
 const followUnfollow = async (req, res) => {
     try {
