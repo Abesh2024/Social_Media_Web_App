@@ -2,12 +2,13 @@ import axios from 'axios';
 import toastFun from './showToast';
 import { useSetRecoilState } from 'recoil';
 import userAtom from '../atoms/userAtom';
+import { useNavigate } from 'react-router-dom';
 
 
 const useLogout = () => {
     const toast = toastFun();
     const setUser = useSetRecoilState(userAtom); // Correct usage of useSetRecoilState
-
+    const navigate = useNavigate();
     const logout = async () => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/v1/user/logout`, {
@@ -26,6 +27,7 @@ const useLogout = () => {
             setUser(null);
 
             toast("Success", "Logout successful!", "success");
+            navigate('/')
         } catch (error) {
             toast("Error", error.message || "Failed to connect to the server.", "error"); 
         }
