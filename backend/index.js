@@ -11,7 +11,7 @@ configDotenv();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:5173', "https://social-media-web-app-teal.vercel.app"], // Frontend URLs
+  origin: ['http://localhost:5173', "https://social-media-web-app-murex.vercel.app"], // Frontend URLs
   credentials: true, // Allow credentials (cookies) to be included
   optionsSuccessStatus: 200, // For legacy browser support
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
