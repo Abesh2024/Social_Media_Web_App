@@ -11,7 +11,8 @@ configDotenv();
 const app = express();
 
 const corsOptions = {
-  origin: "https://social-media-web-app-lake.vercel.app", // Frontend URLs`
+  origin: "https://social-media-web-app-silk.vercel.app/auth", // Frontend URLs` 
+         //https://social-media-web-app-silk.vercel.app/auth
   credentials: true, // Allow credentials (cookies) to be included
   optionsSuccessStatus: 200, // For legacy browser support
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
