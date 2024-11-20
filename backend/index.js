@@ -11,7 +11,7 @@ configDotenv();
 const app = express();
 
 const corsOptions = {
-       origin: "https://social-media-web-app-silk.vercel.app",  //
+       origin: "http://localhost:5173", //"https://social-media-web-app-silk.vercel.app",  //
        credentials: true,
        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
 };
