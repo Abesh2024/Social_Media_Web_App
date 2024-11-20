@@ -15,7 +15,7 @@ const corsOptions = {
          //https://social-media-web-app-silk.vercel.app/auth
   credentials: true, // Allow credentials (cookies) to be included
   optionsSuccessStatus: 200, // For legacy browser support
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
+  methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'], // Allowed methods
 };
 
 app.use(cors(corsOptions));
