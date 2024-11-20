@@ -10,6 +10,7 @@ const tokenGenerate = (_id, res) => {
 		httpOnly: true, // more secure
 		maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
 		sameSite: "strict", // CSRF
+		secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production	});
 	});
 
 	return token;
