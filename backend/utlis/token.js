@@ -7,11 +7,9 @@ const tokenGenerate = (_id, res) => {
 	});
 	
 	res.cookie("jwt", token, {
-		httpOnly : true,
-		maxAge: 15 * 24 * 60 * 60 * 1000,  //ms
-        // sameSite: 'none',
-        secure: process.env.NODE_ENV === "production",
-        path: '/',
+		httpOnly: true, // more secure
+		maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
+		sameSite: "strict", // CSRF
 	});
 
 	return token;
