@@ -34,7 +34,9 @@ const UserPage = () => {
         // console.log(data);
         setPosts(data)
       } catch (error) {
-        toast("error", error.message, "error")
+        // toast("error", error.message, "error")
+        // toast("error", error.message, "error")
+        onsole.log(error.message);
         setPosts([])
       } finally {
         setFetchingPosts(false)

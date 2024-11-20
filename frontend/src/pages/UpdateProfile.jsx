@@ -67,7 +67,8 @@ export default function UpdateProfile() {
       // console.log(res, "from line 60");
       // console.log(res.data.user, "from 61 ->");
       if (data.error) {
-        toast("Error", data.error, "error");
+        // toast("Error", data.error, "error");
+        consle.log(data.error);
         return;
       }
 
@@ -76,8 +77,8 @@ export default function UpdateProfile() {
       localStorage.setItem("user-threads", JSON.stringify(data.user));
       // navigate(`/${user._id}`)
     } catch (error) {
-
-      toast("Error", error, "error");
+      console.log(error);
+      // toast("Error", , "error");
     } finally {
       setUpdating(false)
     }

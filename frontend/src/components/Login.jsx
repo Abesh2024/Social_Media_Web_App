@@ -34,6 +34,8 @@ export default function Login() {
 
       if (res.data.error) { // Check res.data.error instead of res.error
         toast("Error", res.response.data, "error");
+				// console.log(res);
+
         return;
       }
       const userData = res.data;
@@ -45,6 +47,8 @@ export default function Login() {
     } catch (error) {
       // console.error('Login error:', error);
       toast("Error", error.response.data.message || "Failed to connect to the server.", "error");
+				// console.log(data.error);
+
     }
   };
 

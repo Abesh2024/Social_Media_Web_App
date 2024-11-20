@@ -22,7 +22,7 @@ const PostPage = () => {
   const currentUser = useRecoilValue(userAtom)
   const navigate = useNavigate()
 
-  // const currentPost = posts[0];
+  const currentPost = posts[0];
 
   useEffect(() => {
     const getPost = async () => {
@@ -36,13 +36,15 @@ const PostPage = () => {
         });
         const data = await res.json();
         if (data.error) {
-          toast("Error", data.error, "error");
+          // toast("Error", data.error, "error");
+          console.log(data.error);
           return;
         }
 
         setPosts([data]);
       } catch (error) {
-        toast("Error", error.message, "error");
+        // toast("Error", error.message, "error");
+        console.log(error.message);
       }
     };
     getPost();
@@ -51,10 +53,10 @@ const PostPage = () => {
 
   const deletePost = async () => {
     try {
-        if(!window.confirm("this post will be deleated")) return;
+        // if(!window.confirm("this post will be deleated")) return;
 
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/post/${posts._id}`, {
-            method: "DELETE",
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/post/${currentPost._id}`, {
+            method: "DELETE",  //http://localhost:10000/api/post/64c5116e221
             headers: {
                 "Content-Type":"application/json"
             },
@@ -62,17 +64,20 @@ const PostPage = () => {
         })
 
         const data = await res.json();
+        console.log(data)
 
         if(data.error) {
             toast("error", data.error, "error")
+            // console.log(data.error)
             return;
         }
 
         toast("success", "post deleated", "success")
-        navigate(`/${user.userName}`)
+        navigate(`/${user?.userName}`)
 
     } catch (error) {
-        toast("error", error, "error")
+        toast("error", error.message, "error")
+        // console.log(error)
     }
 }
 
@@ -92,9 +97,9 @@ const PostPage = () => {
     <>
       <Flex>
         <Flex alignItems="center" gap="3" width="full">
-          <Avatar src={user?.profilePic} size="md" name="Mark Zuckerberg" />
+          <Avatar src={user?.profilePic} size="md" name={user?.name} />
           <Flex alignItems="center">
-            <Text fontSize="sm" fontWeight="bold">{user?.userName}</Text>
+            <Text fontSize="sm" fontWeight="bold">{user?.name}</Text>
             <Image src={verified} w="4" h="4" ml="2" />
           </Flex>
         </Flex>
@@ -103,7 +108,9 @@ const PostPage = () => {
             {formatDistanceToNow(new Date(currentPost.createdAt))} ago
           </Text>
 
-          {currentUser?._id === currentPost.postedBy && <DeleteIcon onClick={deletePost} />}
+          {currentUser?._id === currentPost.postedBy && 
+           <DeleteIcon data-index="Asdf" fill={"red"} onClick={deletePost}/>
+           }
         </Flex>
       </Flex>
 

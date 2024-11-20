@@ -12,6 +12,7 @@ const app = express();
 
 const corsOptions = {
        origin: "https://social-media-web-app-silk.vercel.app",  
+      //  origin: "http://localhost:5173",  
        credentials: true,
        methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
 };

@@ -34,13 +34,17 @@ const Post = ({post, postedBy }) => {
                 // console.log(data);
 
                 if(data.error) {
-                    toast("error", data.error, "error")
+                    // toast("error", data.error, "error")
+				console.log(data.error);
+
                     return;
                 }
                 setUser(data)
 
             } catch (error) {
-                toast("error", error, "error")
+                // toast("error", error, "error")
+				console.log(data.error);
+
                 setUser(null)
             }
         }
@@ -54,7 +58,7 @@ const Post = ({post, postedBy }) => {
             e.preventDefault();
             if(!window.confirm("this post will be deleated")) return;
 
-            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}api/post/${post._id}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/post/${post._id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json"
@@ -66,6 +70,8 @@ const Post = ({post, postedBy }) => {
 
             if(data.error) {
                 toast("error", data.error, "error")
+				console.log(data.error);
+
                 return;
             }
 
@@ -73,7 +79,9 @@ const Post = ({post, postedBy }) => {
             
             setPosts((prev) => prev.filter((p) => p._id !== post._id))
         } catch (error) {
+            console.log(error)
             toast("error", error, "error")
+            // console.log(error);
         }
     }
 

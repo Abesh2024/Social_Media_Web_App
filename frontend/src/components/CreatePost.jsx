@@ -69,6 +69,8 @@ const CreatePost = () => {
             const data = await res.json();
             if(data.error) {
                 toast("error", data.error, "error")
+				// console.log(data.error);
+
                 return;
             }
             toast("success", "Post created Successfully", "success")
@@ -81,7 +83,9 @@ const CreatePost = () => {
             setImgUrl("")
 
         } catch (error) {
-            toast("error", error, "error")
+            // toast("error", error, "error")
+				console.log(data.error);
+
         } finally {
             setLoading("")
         }

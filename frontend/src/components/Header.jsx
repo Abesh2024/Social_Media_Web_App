@@ -17,7 +17,7 @@ const Header = () => {
 
 
   return (
-    <Flex justifyContent={"space-between"} mt={10} alignItems="center">
+    <Flex justifyContent={"space-between"} mt={10} mb={10} alignItems="center" >
       {user && (
         <Link as={RouterLink} to="/">
           <AiFillHome size="24" style={{ marginRight: "10px" }} /> 

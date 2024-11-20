@@ -40,7 +40,8 @@ const Actions = ({ post }) => {
 			const data = await res.json();
 
 			if (data.error) {
-				toast("error", error.message, "error")
+				// toast("error", error.message, "error")
+				console.log(data.error);
 				return;
 			}
 
@@ -67,7 +68,9 @@ const Actions = ({ post }) => {
 			console.log(data);
 
 		} catch (error) {
-			toast("error", error.message, "error")
+			// toast("error", error.message, "error")
+			console.log(data.error);
+
 		} finally {
 			setLiking(false)
 		}
@@ -90,6 +93,8 @@ const Actions = ({ post }) => {
 
 				if(data.error) {
 					toast("error", error.message, "error")
+				    //  console.log(data.error);
+
 					return;
 				}
 

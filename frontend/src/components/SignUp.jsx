@@ -37,6 +37,8 @@ export default function SignUp() {
 
 			if (data.error) {
 				toast("Error", data.error, "error");
+				console.log(data.error);
+
 				return;
 			}
 

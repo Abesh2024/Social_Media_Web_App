@@ -57,6 +57,7 @@ const getPost = async (req, res) => {
 const deletePost = async (req, res) => {
 	try {
 		const post = await PostModel.findById(req.params.id);
+		console.log(post);
 		if (!post) {
 			return res.status(404).json({ error: "Post not found" });
 		}
@@ -65,12 +66,12 @@ const deletePost = async (req, res) => {
 			return res.status(401).json({ error: "Unauthorized to delete post" });
 		}
 
-		if (post.img) {
-			const imgId = post.img.split("/").pop().split(".")[0];
-			await cloudinary.uploader.destroy(imgId);
-		}
+		// if (post.img) {
+		// 	const imgId = post.img.split("/").pop().split(".")[0];
+		// 	await cloudinary.uploader.destroy(imgId);
+		// }
 
-		await PostModel.findByIdAndDelete(req.params.id);
+		await PostModel.findByIdAndDelete(post._id);
 
 		res.status(200).json({ message: "Post deleted successfully" });
 	} catch (err) {

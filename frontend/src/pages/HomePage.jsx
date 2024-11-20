@@ -43,13 +43,13 @@ const HomePage = () => {
   return (
     <Flex gap="10" alignItems="flex-start">
     <Box flex={70}>
-    {!loading && posts.length === 0 && <h1>Follow some users to sees feed Posts</h1>}
+    {!loading && posts?.length === 0 && <h1>Follow some users to sees feed Posts</h1>}
       {loading &&
         <Flex justify="center">
           <Spinner size="xl" />
         </Flex>}
 
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <Post key={post._id} post={post} postedBy={post.postedBy} />
       ))}
     </Box>
